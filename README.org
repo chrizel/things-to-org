@@ -1,0 +1,25 @@
+* things-to-org
+
+Python script that converts your [[https://culturedcode.com/things/][Things 3]] (macOS version) data to an [[https://orgmode.org/][Org Mode]] file.
+
+** Features
+- Converts the inbox, areas, projects, headlines and to-dos
+- Converts to-dos without a project into a "No Project" section if relevant
+- "When" dates are converted to SCHEDULED stamps
+- "Dealine" dates are converted to DEADLINE stamps
+- Notes in projects and to-dos are converted from [[https://en.wikipedia.org/wiki/Markdown][Markdown]] to org format by using [[https://pandoc.org/][Pandoc]]
+
+** Install and Usage
+First install [[https://github.com/thingsapi/things.py][things.py]], [[https://pandoc.org/][Pandoc]] and the [[https://github.com/boisgera/pandoc/][Pandoc Python Library]].
+
+#+begin_example
+$ pip3 install things.py
+$ brew install pandoc
+$ pip3 install pandoc
+#+end_example
+
+Then you can use this script as follows:
+
+#+begin_example
+$ python3 things-to-org.py > output.org  
+#+end_example

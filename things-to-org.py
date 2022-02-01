@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
 
 import things
+import pandoc
+
 from datetime import datetime
 
 def get_todo_keyword(task, suffix=' '):
@@ -40,9 +42,10 @@ def print_task(task, level):
         print(' '.join(dates))
 
     if 'notes' in task:
-        notes = task['notes'].strip()
+        notes = task['notes']
         if len(notes) > 0:
-            print(notes)
+            doc = pandoc.read(notes, format='markdown', options=['--shift-heading-level-by={0}'.format(len(level))])
+            print(pandoc.write(doc, format='org'))
 
     if 'checklist' in task and len(task['checklist']) > 0:
         for item in task['checklist']:
