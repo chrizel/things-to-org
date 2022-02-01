@@ -5,6 +5,7 @@ Python script that converts your [[https://culturedcode.com/things/][Things 3]] 
 ** Features
 - Converts the inbox, areas, projects, headlines and to-dos
 - Converts to-dos without a project into a "No Project" section if relevant
+- Converts to-do checklists
 - "When" dates are converted to SCHEDULED stamps
 - "Dealine" dates are converted to DEADLINE stamps
 - Notes in projects and to-dos are converted from [[https://en.wikipedia.org/wiki/Markdown][Markdown]] to org format by using [[https://pandoc.org/][Pandoc]]
