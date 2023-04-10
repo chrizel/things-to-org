@@ -56,12 +56,14 @@ def print_tasks(tasks, level):
     for task in tasks:
         print_task(task, level)
 
-tasks = things.inbox(include_items=True)
+# Any todo in Inbox, including completed
+tasks = things.inbox(status=None, include_items=True)
 if len(tasks) > 0:
     print('* Inbox')
     print_tasks(tasks, '**')
 
-tasks = things.todos(project=False, heading=False, area=False, start_date=True, include_items=True)
+# Any todo that has no heading, project and area
+tasks = things.todos(project=False, heading=False, area=False, status=None, include_items=True)
 if len(tasks) > 0:
     print('* No Project')
     print_tasks(tasks, '**')
@@ -70,21 +72,22 @@ areas = things.areas()
 for area in areas:
     print('* {0}'.format(area['title']))
 
-    tasks = things.todos(area=area['uuid'], include_items=True)
+    # Any todo 
+    tasks = things.todos(area=area['uuid'], status=None, include_items=True)
     print_tasks(tasks, '**')
 
     projects = things.projects(area=area['uuid'])
     for project in projects:
         print_task(project, '**')
 
-        tasks = things.todos(project=project['uuid'], include_items=True)
+        #  Any todo in a project, not under a heading
+        tasks = things.todos(project=project['uuid'], status=None, include_items=True)
         print_tasks(tasks, '***')
 
         headings = things.tasks(type='heading', project=project['uuid'])
         for heading in headings:
             print('*** {0}'.format(heading['title']))
 
-            tasks = things.todos(heading=heading['uuid'], include_items=True)
+            # Any todo under the heading
+            tasks = things.todos(heading=heading['uuid'], status=None, include_items=True)
             print_tasks(tasks, '****')
-
-
