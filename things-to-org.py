@@ -43,9 +43,10 @@ def print_task(task, level):
 
     if 'notes' in task:
         notes = task['notes']
-        if len(notes) > 0:
-            doc = pandoc.read(notes, format='markdown', options=['--shift-heading-level-by={0}'.format(len(level))])
-            print(pandoc.write(doc, format='org'))
+        if not notes is None:
+            if len(notes) > 0:
+                doc = pandoc.read(notes, format='markdown', options=['--shift-heading-level-by={0}'.format(len(level))])
+                print(pandoc.write(doc, format='org'))
 
     if 'checklist' in task and len(task['checklist']) > 0:
         for item in task['checklist']:
