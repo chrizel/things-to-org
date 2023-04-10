@@ -76,7 +76,7 @@ for area in areas:
     tasks = things.todos(area=area['uuid'], status=None, include_items=True)
     print_tasks(tasks, '**')
 
-    projects = things.projects(area=area['uuid'])
+    projects = things.projects(area=area['uuid'], status=None)
     for project in projects:
         print_task(project, '**')
 
